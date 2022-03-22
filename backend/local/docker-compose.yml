@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: postgis/postgis
+    image: postgresql/postgresql
     restart: always
     environment:
       - POSTGRES_DB=gestorx
@@ -16,7 +16,7 @@ services:
   web:
     build: .
     volumes:
-      - ../gestorx/:/code
+      - ../organizador/:/code
       - ./requirements.txt:/code/requirements.txt
     command: bash -c "python -m pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
     ports:
